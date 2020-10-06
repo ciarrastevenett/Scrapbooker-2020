@@ -11,6 +11,7 @@
         <RadioButton x:Name="Hello_Button" Content="hello" IsChecked ="True" HorizontalAlignment="Left" Margin="247,220,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="GoodbyeButton" Content="goodbye" HorizontalAlignment="Left" Margin="483,223,0,0" VerticalAlignment="Top"/>
         <Button Content="Display" HorizontalAlignment="Left" Margin="356,291,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="ADDED BY LUCAS!" HorizontalAlignment="Left" Margin="49,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.587,0.068"/>
 
     </Grid>
 </Window>
