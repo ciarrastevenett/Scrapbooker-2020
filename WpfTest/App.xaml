@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:WpfTest"
              StartupUri="Greetings.xaml">
     <Application.Resources>
-         
+      <Button Content ="added by Junior"/> 
     </Application.Resources>
 </Application>
