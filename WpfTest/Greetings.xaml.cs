@@ -32,16 +32,16 @@ namespace WpfTest
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Hello_Button.IsChecked != true)
+            if (Scanned_Button.IsChecked != true)
             {
-                if (GoodbyeButton.IsChecked == true)
+                if (Downloaded_Button.IsChecked == true)
                 {
-                    MessageBox.Show("Goodbye.");
+                    MessageBox.Show("Where would you like to organize downloaded documents?");
                 }
             }
             else
             {
-                MessageBox.Show("Hello.");
+                MessageBox.Show("Where would you like to organize scanned documents?");
             }
         }
     }

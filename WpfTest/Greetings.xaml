@@ -7,14 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid x:Name="HelloButton">
-        <TextBlock HorizontalAlignment="Left" Margin="247,105,0,0" TextWrapping="Wrap" Text="Select a message option and then choose the Display button" VerticalAlignment="Top" RenderTransformOrigin="-2.824,0.576"/>
-        <RadioButton x:Name="Hello_Button" Content="hello" IsChecked ="True" HorizontalAlignment="Left" Margin="247,220,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="GoodbyeButton" Content="goodbye" HorizontalAlignment="Left" Margin="483,223,0,0" VerticalAlignment="Top"/>
-        <Button Content="Display" HorizontalAlignment="Left" Margin="356,291,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Label Content="ADDED BY LUCAS!" HorizontalAlignment="Left" Margin="49,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.587,0.068"/>
-        <Label Content="Ciarra's change" HorizontalAlignment="Right" Margin="49,35,0,0" VerticalAlignment="Bottom" RenderTransformOrigin="-0.587,0.068"/>
-        <Label Content="Added By Junior" HorizontalAlignment="Right" Margin="49,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.587,0.068"/>
-        <TextBlock HorizontalAlignment="Left" Margin="49,394,0,0" TextWrapping="Wrap" Text="Aaron's Addition" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="Welcome to the Scrapbooker" VerticalAlignment="Top" RenderTransformOrigin="-2.824,0.576" FontFamily="Segoe UI Light" FontSize="36"/>
+        <RadioButton x:Name="Scanned_Button" Content="Scan" IsChecked ="True" HorizontalAlignment="Left" Margin="247,220,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Downloaded_Button" Content="Download" HorizontalAlignment="Left" Margin="483,223,0,0" VerticalAlignment="Top"/>
+        <Button Content="Continue" HorizontalAlignment="Left" Margin="356,291,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
 
 
