@@ -8,6 +8,18 @@
       Title="Page1" Height="450" Width="800" Background="White">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36">Loading</TextBlock>  
+        <Frame x:Name= "SelectionPage"/>
+        <RadioButton x:Name="Scanned_Button" Content="Scan" IsChecked ="True" HorizontalAlignment="Left" Margin="247,220,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Downloaded_Button" Content="Download" HorizontalAlignment="Left" Margin="483,223,0,0" VerticalAlignment="Top"/>
+        <Button Content="Continue" HorizontalAlignment="Center" Margin="150,290,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <ComboBox HorizontalAlignment="Left" Margin="280,290,0,0" VerticalAlignment="Top" Width="120">
+            <TextBlock> Create an album</TextBlock>
+            <TextBlock> Locations</TextBlock>
+            <TextBlock> Favorites</TextBlock>
+            <TextBlock> Childhood memories</TextBlock>
+
+        </ComboBox>
+
+
     </Grid>
 </Page>

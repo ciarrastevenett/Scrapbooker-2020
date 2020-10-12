@@ -1,0 +1,16 @@
+﻿<Page x:Class="WpfTest.Page2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfTest"
+      mc:Ignorable="d" 
+      Title="Page2" Height="450" Width="800" Background="White">
+
+
+    <Grid>
+        <Frame x:Name= "LoadingPage"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"> LOADING </TextBlock>
+
+    </Grid>
+</Page>

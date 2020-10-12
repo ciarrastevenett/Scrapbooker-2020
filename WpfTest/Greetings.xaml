@@ -9,16 +9,8 @@
     <Grid x:Name="HelloButton">
         <Frame x:Name= "Main"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,110,0,0" TextWrapping="Wrap" Text="Welcome to the Scrapbooker" VerticalAlignment="Top" RenderTransformOrigin="-2.824,0.576" FontFamily="Segoe UI Light" FontSize="36"/>
-        <RadioButton x:Name="Scanned_Button" Content="Scan" IsChecked ="True" HorizontalAlignment="Left" Margin="247,220,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="Downloaded_Button" Content="Download" HorizontalAlignment="Left" Margin="483,223,0,0" VerticalAlignment="Top"/>
+       
         <Button Content="Continue" HorizontalAlignment="Center" Margin="150,290,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ComboBox HorizontalAlignment="Center" Margin="0,290,100,0" VerticalAlignment="Top" Width="120" IsDropDownOpen="True">
-            <TextBlock> Create an album</TextBlock>
-            <TextBlock> Locations </TextBlock>
-            <TextBlock> Family Album</TextBlock>
-            <TextBlock> Favorites</TextBlock>
-            <TextBlock> Childhood Pictures</TextBlock>
-            </ComboBox>
         
 
 

@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace WpfTest
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Page2.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Page2 : Page
     {
-        public Page1()
+        public Page2()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SelectionPage.Content = new Page2();
-
         }
     }
 }
