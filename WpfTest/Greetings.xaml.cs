@@ -35,6 +35,11 @@ namespace WpfTest
             Main.Content = new Page1();
             
             }
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Page2();
+
+        }
     }
 }
 

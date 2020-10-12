@@ -8,11 +8,11 @@
       Title="Page1" Height="450" Width="800" Background="White">
 
     <Grid>
-        <Frame x:Name= "SelectionPage"/>
-        <RadioButton x:Name="Scanned_Button" Content="Scan" IsChecked ="True" HorizontalAlignment="Left" Margin="247,220,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="Downloaded_Button" Content="Download" HorizontalAlignment="Left" Margin="483,223,0,0" VerticalAlignment="Top"/>
-        <Button Content="Continue" HorizontalAlignment="Center" Margin="150,290,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
-        <ComboBox HorizontalAlignment="Left" Margin="280,290,0,0" VerticalAlignment="Top" Width="120">
+        <Frame x:Name= "SelectionPage" Margin="-10,0,10,0"/>
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="305,165,327,261" Height="24" Width="168">What would you like to do?</TextBlock>
+        <RadioButton x:Name="Scanned_Button" Content="Scan" IsChecked ="True" HorizontalAlignment="Left" Margin="285,232,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Downloaded_Button" Content="Download" HorizontalAlignment="Left" Margin="400,232,0,0" VerticalAlignment="Top"/>
+        <ComboBox Margin="327,280,0,0" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top">
             <TextBlock> Create an album</TextBlock>
             <TextBlock> Locations</TextBlock>
             <TextBlock> Favorites</TextBlock>
