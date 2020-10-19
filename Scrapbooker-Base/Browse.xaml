@@ -9,17 +9,23 @@
       Title="Browse" Loaded="PageLoaded">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="109*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <TextBlock Text="Browse" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" />
+        <Frame x:Name="TitleBar" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="Title" Text="Browse" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="32" Margin="90,0,0,0"/>
         <!--
         TODO: Fix it so the images will show side bi side and the user should be able to scroll the window
         -->
-        <StackPanel Grid.Row="1" Name="simpleGrid" >
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" Width="90" Margin="0,0,274,0" Grid.Row="1" Height="390">
+            <Button Content="Upload" Grid.Column="0" Margin="15,15,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickUpload"/>
         </StackPanel>
-
+        <StackPanel Grid.Row="1" Name="simpleGrid" Margin="91,0,0,0" Grid.ColumnSpan="2">
+        </StackPanel>
     </Grid>
 </Page>
