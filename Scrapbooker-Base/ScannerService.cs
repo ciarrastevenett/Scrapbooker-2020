@@ -25,7 +25,7 @@ namespace Scrapbooker_Base
                     if (scanResult != null)
                     {
                         ImageFile image = (ImageFile)scanResult;
-                        object Constants = null;
+                        
                         SaveImageToJpgFile(image, Constants.ScannedImageLocation);
                     }
                 }
@@ -36,6 +36,7 @@ namespace Scrapbooker_Base
             }
         }
 
+     
 
         private static void AdjustScannerSettings(IItem scannnerItem, int scanResolutionDPI, int scanStartLeftPixel, int scanStartTopPixel,
             int scanWidthPixels, int scanHeightPixels, int brightnessPercents, int contrastPercents)
