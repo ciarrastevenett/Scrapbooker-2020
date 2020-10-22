@@ -3,7 +3,9 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Reflection;
-using Scrapbooker_Base;
+using WIA;
+
+
 
 // TODO: Separate necessary classes/methods/namespace
 
@@ -66,8 +68,7 @@ namespace Stage_Scrapbooker
         
         private void BtnClickScan(object sender, RoutedEventArgs e)
         {
-          ScannerService.Scan();
-
+            Main.Content = new Form1();
         }
 
     }
