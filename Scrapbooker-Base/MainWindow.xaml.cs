@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Reflection;
 using WIA;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
 
 
 
@@ -68,9 +70,14 @@ namespace Stage_Scrapbooker
         
         private void BtnClickScan(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Form1();
+            Form1 scanForm = new Form1();
+            this.Visibility = Visibility.Hidden;
+            scanForm.Show();
+
+           
         }
 
+       
     }
 }
     
