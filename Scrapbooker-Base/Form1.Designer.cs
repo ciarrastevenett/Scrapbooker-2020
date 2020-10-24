@@ -111,7 +111,7 @@ namespace Stage_Scrapbooker
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion

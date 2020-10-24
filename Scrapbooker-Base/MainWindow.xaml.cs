@@ -71,7 +71,7 @@ namespace Stage_Scrapbooker
         private void BtnClickScan(object sender, RoutedEventArgs e)
         {
             Form1 scanForm = new Form1();
-            this.Visibility = Visibility.Hidden;
+            //this.Visibility = Visibility.Hidden;
             scanForm.Show();
 
            
