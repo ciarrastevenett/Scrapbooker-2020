@@ -35,9 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Interop.WIA">
-      <HintPath>\\vmware-host\Shared Folders\Desktop\Interop.WIA.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="Dynamsoft.Twain">
+      <HintPath>..\..\..\..\..\..\Program Files\Dynamsoft\Dynamic .NET TWAIN 8.1.2\Redistributable\Assembly\For .NETFramework 4.0\Dynamsoft.Twain.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
