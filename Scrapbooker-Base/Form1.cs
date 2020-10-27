@@ -12,7 +12,12 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Reflection;
 using System.Windows.Data;
-
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 
 namespace Stage_Scrapbooker
@@ -35,31 +40,35 @@ namespace Stage_Scrapbooker
         {
             try
             {
+
+
                 //Create a DeviceManager instance
                 var deviceManager = new DeviceManager();
 
-                for (int i = 0; i <= deviceManager.DeviceInfos.Count; i++) // Loop Through the get List Of Devices.
+                for (int i = 1; i <= deviceManager.DeviceInfos.Count; i++) // Loop Through the get List Of Devices.
                 {
                     if (deviceManager.DeviceInfos[i].Type != WiaDeviceType.ScannerDeviceType) // Skip device If it is not a scanner
                     {
                         continue;
                     }
 
-                    lstListOfScanner.Items.Add(deviceManager.DeviceInfos[i].Properties["Name"]); //gets the list of scanners and adds their name to the listbox
+                    lstListOfScanner.Items.Add(deviceManager.DeviceInfos[i].Properties["Name"].get_Value()); //gets the list of scanners and adds their name to the listbox
                 }
             }
             catch (COMException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
 
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            try
+           try
             {
+
                 var deviceManager = new DeviceManager();
 
                 DeviceInfo AvailableScanner = null;
@@ -78,30 +87,29 @@ namespace Stage_Scrapbooker
 
                 var device = AvailableScanner.Connect(); //Connect to the available scanner.
 
-                var ScanerItem = device.Items[1]; // select the scanner.
+                var ScannerItem = device.Items[1]; // select the scanner.
+            
 
-                ImageFile imgFile = (ImageFile)ScanerItem.Transfer(FormatID.wiaFormatJPEG); //Retrive an image in Jpg format and store it into a variable.
+                    var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatJPEG); //Retrive an image in Jpg format and store it into a variable.
 
-                // 1) Get the string representing the application root directory
-                string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"/ImagesFolder-Scrapbooker";
+                // save the image in some path with filename.
 
-                // 2) Create a new object DirectoryInfo using our path
-                DirectoryInfo directory = new DirectoryInfo(path);
-                string
+                if (File.Exists(Path))
+                    {
+                        File.Delete(Path);
+                    }
 
-                                // 3) Define the image's folder name within the path
-                                imageFolderPath = path + @"\ImagesFolder-Scrapbooker";
+                    imgFile.SaveFile(Path);
 
-                // 4) Check if the directory exists if not, it will create the images folder
-                if (!Directory.Exists(imageFolderPath))
-                {
-                    DirectoryInfo di = Directory.CreateDirectory(imageFolderPath);
+                    pictureBox1.ImageLocation = Path;
+
                 }
-            }
-            catch (COMException ex)
-            {
+                catch (COMException ex)
+                {
                 MessageBox.Show(ex.Message);
+                }
+
             }
         }
     }
-}
