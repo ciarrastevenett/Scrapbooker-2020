@@ -40,6 +40,13 @@ namespace Stage_Scrapbooker
             // Loop and create images to add to screen
             foreach (string file in fileEntries)
             {
+                int j = 1;
+                int i = 1;
+                i++;
+                if (i % 3 == 0) {
+                    j++;
+                    i = 1;
+                }
                 Image simpleImage = new Image();
                 simpleImage.Width = 200;
                 simpleImage.Margin = new Thickness(5);
@@ -52,9 +59,11 @@ namespace Stage_Scrapbooker
 
                 simpleImage.Source = bi;
 
-                //Grid.SetColumn(simpleImage, 2);
-                //Grid.SetRow(simpleImage, 1);
-                simpleGrid.Children.Add(simpleImage);
+                listBox.Items.Add(simpleImage);
+                Grid.SetColumn(simpleImage, i);
+                Grid.SetRow(simpleImage, j);
+                //simpleGrid.Children.Add(simpleImage);
+
 
             }
 

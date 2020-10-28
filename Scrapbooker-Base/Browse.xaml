@@ -22,8 +22,9 @@
         <!--
         TODO: Fix it so the images will show side bi side and the user should be able to scroll the window
         -->
+        <ListBox Name = "listBox" Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
         <StackPanel Grid.Row="1" Name="simpleGrid" Margin="0,0,0,0" Grid.ColumnSpan="2">
-            <TextBlock Text="Test Text"/>
+
         </StackPanel>
     </Grid>
 </Page>
