@@ -11,13 +11,7 @@ using WIA;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Reflection;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Drawing.Imaging;
 
 
 namespace Stage_Scrapbooker
@@ -30,10 +24,14 @@ namespace Stage_Scrapbooker
         {
             InitializeComponent();
         }
-
         private void lblListOfScanner_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void Save(string filename)
+        {
+            filename = null;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -90,22 +88,25 @@ namespace Stage_Scrapbooker
                 var ScannerItem = device.Items[1]; // select the scanner.
             
 
-                    var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatJPEG); //Retrive an image in Jpg format and store it into a variable.
+                var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatJPEG); //Retrive an image in Jpg format and store it into a variable.
 
-                string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"/ImagesFolder-Scrapbooker";
-                // save the image in some path with filename.
+                 string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "ImagesFolder-Scrapbooker";
+                //save the image in some path with filename.
+                //string Path = "ImagesFolder-Scrapbooker";
+
 
                 if (File.Exists(Path))
-                    {
-                        File.Delete(Path);
-                    }
-
-                    imgFile.SaveFile(Path);
-
-                    pictureBox1.ImageLocation = Path;
-
+                {
+                    File.Delete(Path);
                 }
-                catch (COMException ex)
+
+
+                imgFile.SaveFile(Path);
+                pictureBox1.ImageLocation = Path;
+
+
+            }
+            catch (COMException ex)
                 {
                 MessageBox.Show(ex.Message);
                 }
