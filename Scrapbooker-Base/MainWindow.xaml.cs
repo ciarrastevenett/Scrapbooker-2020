@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Reflection;
+using Scrapbooker_Base;
 
 // TODO: Separate necessary classes/methods/namespace
 
@@ -51,6 +52,10 @@ namespace Stage_Scrapbooker
         private void BtnClickDetail(object sender, RoutedEventArgs e)
         {
             Main.Content = new DetailPage();
+        }
+        private void BtnClickSettings(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new SettingsPage();
         }
     }
 }
