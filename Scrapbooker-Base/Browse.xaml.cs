@@ -55,7 +55,6 @@ namespace Stage_Scrapbooker
                 //Grid.SetColumn(simpleImage, 2);
                 //Grid.SetRow(simpleImage, 1);
                 simpleGrid.Children.Add(simpleImage);
-
             }
 
         }

@@ -90,9 +90,9 @@ namespace Stage_Scrapbooker
 
                 var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatJPEG); //Retrive an image in Jpg format and store it into a variable.
 
-                 string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ "ImagesFolder-Scrapbooker";
+                 string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ @"\ImagesFolder-Scrapbooker";
                 //save the image in some path with filename.
-                //string Path = "ImagesFolder-Scrapbooker";
+                //string Path = @"\ImagesFolder-Scrapbooker";
 
 
                 if (File.Exists(Path))
