@@ -18,6 +18,7 @@ namespace Stage_Scrapbooker.Properties
     {
 
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        internal string FolderNameRaw;
 
         public static Settings Default
         {

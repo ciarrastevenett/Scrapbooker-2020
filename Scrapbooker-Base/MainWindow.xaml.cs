@@ -1,7 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Reflection;
+using WIA;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+
+
 
 // TODO: Separate necessary classes/methods/namespace
 
@@ -41,8 +47,17 @@ namespace Stage_Scrapbooker
 
         private void BtnClickUpload(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Upload();
+            Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
+            op.Title = "Select a picture";
+            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (op.ShowDialog() == true)
+            {
+                imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+            }
         }
+
         private void BtnClickBrowse(object sender, RoutedEventArgs e)
         {
             Main.Content = new Browse();
@@ -52,5 +67,18 @@ namespace Stage_Scrapbooker
         {
             Main.Content = new DetailPage();
         }
+        
+        private void BtnClickScan(object sender, RoutedEventArgs e)
+        {
+            Form1 scanForm = new Form1();
+            //this.Visibility = Visibility.Hidden;
+            scanForm.Show();
+
+           
+        }
+
+       
     }
 }
+    
+
