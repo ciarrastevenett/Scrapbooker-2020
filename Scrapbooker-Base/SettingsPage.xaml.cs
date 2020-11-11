@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,10 @@ namespace Scrapbooker_Base
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
     /// </summary>
+    //Reference to work with databases https://youtu.be/ZMXgJ3AhqRA
     public partial class SettingsPage : Page
     {
+        private int itemSelected;
         public SettingsPage()
         {
             InitializeComponent();
@@ -65,6 +68,32 @@ namespace Scrapbooker_Base
         {
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
             this.tag_list.ItemsSource = db.Tags.ToList();
+        }
+
+        private void album_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Album test = (Album)album_list.SelectedItem;
+            //Console.WriteLine(test.id);
+            //itemSelected = test.id;
+        }
+
+        private void deleteAlbum_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            var selectedItem = from el in db.Albums
+                               where el.id == this.itemSelected
+                               select el;
+
+            Album albumToDelete = selectedItem.SingleOrDefault();
+
+            if(albumToDelete != null)
+            {
+                db.Albums.Remove(albumToDelete);
+                db.SaveChanges();
+            }
+            Console.WriteLine(itemSelected + "deleted");
+            album_list.UnselectAll();
+            this.loadAbums();
         }
     }
 }
