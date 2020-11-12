@@ -94,7 +94,7 @@ namespace Stage_Scrapbooker
                // string filePath = Path + @"\ImagesFolder-Scrapbooker";
                 //save the image in some path with filename.
                 string Path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string filePath = Path + @"\ImagesFolder-Scrapbooker\newScan.jpeg";
+                string filePath = Path + @"\ImagesFolder-Scrapbooker\" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".jpeg";
 
                 if (File.Exists(filePath))
                 {
