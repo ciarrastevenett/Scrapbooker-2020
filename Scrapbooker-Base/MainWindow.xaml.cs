@@ -47,15 +47,16 @@ namespace Stage_Scrapbooker
 
         private void BtnClickUpload(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
-            }
+            //Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
+            //op.Title = "Select a picture";
+            //op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+            //  "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+            //  "Portable Network Graphic (*.png)|*.png";
+            //if (op.ShowDialog() == true)
+            //{
+            //    imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
+            //}
+            Main.Content = new Upload();
         }
 
         private void BtnClickBrowse(object sender, RoutedEventArgs e)
