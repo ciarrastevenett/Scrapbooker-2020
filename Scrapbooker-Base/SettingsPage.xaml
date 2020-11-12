@@ -1,0 +1,63 @@
+﻿<Page x:Class="Scrapbooker_Base.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Scrapbooker_Base"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SettingsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Settings" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" />
+
+        <TextBlock Text="New Album" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="20,20,20,20"/>
+        <Label Grid.Row="1" Grid.Column="0" Margin="20,50,20,20">Name:</Label>
+        <TextBox x:Name="album_name" HorizontalAlignment="Left" Height="23" Margin="20,80,20,20" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <ListView x:Name="album_list" Margin="20,136,105,58.6" Grid.Row="1" Grid.Column="0" SelectionChanged="album_list_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <!-- <TextBlock Text="ID: " />
+                        <TextBlock Text="{Binding id}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="Album: " /> -->
+                        <TextBlock Text="{Binding albumName}" FontWeight="Bold" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="addAalbum" Content="Create" HorizontalAlignment="Left" Grid.Column="0" Margin="205,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="addAalbum_Click"/>
+
+        <TextBlock Text="New Tag" FontSize="20" Grid.Row="1" Grid.Column="1" Margin="20,20,20,20"/>
+        <Label Grid.Row="1" Grid.Column="1" Margin="20,50,20,20">Name:</Label>
+        <TextBox x:Name="tag_name" HorizontalAlignment="Left" Height="23" Margin="20,80,20,20" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
+        <ListView x:Name="tag_list" Margin="20,136,105,58.6" Grid.Row="1" Grid.Column="1" SelectionChanged="tag_list_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <!-- <TextBlock Text="ID: " />
+                        <TextBlock Text="{Binding id}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="Album: " /> -->
+                        <TextBlock Text="{Binding tagName}" FontWeight="Bold" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="addTag" Content="Create" HorizontalAlignment="Left" Grid.Column="1" Margin="205,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="addTag_Click"/>
+        <Button x:Name="deleteAlbum" Content="Delete" HorizontalAlignment="Left" Grid.Column="0" Margin="20,350,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="deleteAlbum_Click"/>
+        <Button x:Name="deleteTag" Content="Delete" HorizontalAlignment="Left" Grid.Column="1" Margin="20,350,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="deleteTag_Click"/>
+
+    </Grid>
+</Page>

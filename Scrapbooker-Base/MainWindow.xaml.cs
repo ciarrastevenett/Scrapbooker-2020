@@ -3,11 +3,10 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Reflection;
+using Scrapbooker_Base;
 using WIA;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
-
-
 
 // TODO: Separate necessary classes/methods/namespace
 
@@ -68,17 +67,19 @@ namespace Stage_Scrapbooker
         {
             Main.Content = new DetailPage();
         }
+
+        private void BtnClickSettings(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new SettingsPage();
+        }
         
         private void BtnClickScan(object sender, RoutedEventArgs e)
         {
             Form1 scanForm = new Form1();
             //this.Visibility = Visibility.Hidden;
             scanForm.Show();
-
-           
         }
 
-       
     }
 }
     

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scrapbooker_Base;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -49,9 +50,33 @@ namespace Stage_Scrapbooker
                 // TODO: If we don't allow upload the same image, add error handling
                 foreach (string file in files)
                 {
-                    File.Copy(file, $"{imageFolderPath}\\{System.IO.Path.GetFileName(file)}", true);
+                    System.IO.File.Copy(file, $"{imageFolderPath}\\{System.IO.Path.GetFileName(file)}", true);
+
+                    FileInfo fi = new FileInfo(file);
+                    string fileName = fi.Name;
+                    string filePath = imageFolderPath + "\\" + fileName;
+                    string fileFormat = fi.Extension;
+                    long fileSize = fi.Length / 1000;
+                    addImageToFileTable(fileName, filePath, fileFormat, fileSize);
                 }
             }
+        }
+
+        private void addImageToFileTable(string fileName, string filePath, string fileFormat, long fileSize)
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            Scrapbooker_Base.File imageObject = new Scrapbooker_Base.File()
+            {
+                fileName = fileName,
+                filePath = filePath,
+                fileFormat = fileFormat,
+                fileSize = fileSize
+
+            };
+            Console.WriteLine(imageObject.fileName);
+            db.Files.Add(imageObject);
+            db.SaveChanges();
+
         }
     }
 }
