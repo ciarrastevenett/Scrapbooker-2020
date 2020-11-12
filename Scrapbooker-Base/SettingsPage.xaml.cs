@@ -22,7 +22,8 @@ namespace Scrapbooker_Base
     //Reference to work with databases https://youtu.be/ZMXgJ3AhqRA
     public partial class SettingsPage : Page
     {
-        private int itemSelected;
+        private int albumSelected;
+        private int tagSelected;
         public SettingsPage()
         {
             InitializeComponent();
@@ -72,16 +73,18 @@ namespace Scrapbooker_Base
 
         private void album_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Album test = (Album)album_list.SelectedItem;
-            //Console.WriteLine(test.id);
-            //itemSelected = test.id;
+            Album album = (Album)album_list.SelectedItem;
+            if (album is object)
+            {
+                albumSelected = album.id;
+            };
         }
 
         private void deleteAlbum_Click(object sender, RoutedEventArgs e)
         {
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
             var selectedItem = from el in db.Albums
-                               where el.id == this.itemSelected
+                               where el.id == this.albumSelected
                                select el;
 
             Album albumToDelete = selectedItem.SingleOrDefault();
@@ -91,9 +94,33 @@ namespace Scrapbooker_Base
                 db.Albums.Remove(albumToDelete);
                 db.SaveChanges();
             }
-            Console.WriteLine(itemSelected + "deleted");
-            album_list.UnselectAll();
             this.loadAbums();
+        }
+
+        private void tag_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Tag tag = (Tag)tag_list.SelectedItem;
+            if (tag is object)
+            {
+                tagSelected = tag.id;
+            };
+        }
+
+        private void deleteTag_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            var selectedItem = from el in db.Tags
+                               where el.id == this.tagSelected
+                               select el;
+
+            Tag tagToDelete = selectedItem.SingleOrDefault();
+
+            if (tagToDelete != null)
+            {
+                db.Tags.Remove(tagToDelete);
+                db.SaveChanges();
+            }
+            this.loadTags();
         }
     }
 }

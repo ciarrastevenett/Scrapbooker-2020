@@ -28,7 +28,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
-                       <!-- <TextBlock Text="ID: " />
+                        <!-- <TextBlock Text="ID: " />
                         <TextBlock Text="{Binding id}" FontWeight="Bold" />
                         <TextBlock Text=", " />
                         <TextBlock Text="Album: " /> -->
@@ -42,7 +42,7 @@
         <TextBlock Text="New Tag" FontSize="20" Grid.Row="1" Grid.Column="1" Margin="20,20,20,20"/>
         <Label Grid.Row="1" Grid.Column="1" Margin="20,50,20,20">Name:</Label>
         <TextBox x:Name="tag_name" HorizontalAlignment="Left" Height="23" Margin="20,80,20,20" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
-        <ListView x:Name="tag_list" Margin="20,136,105,58.6" Grid.Row="1" Grid.Column="1">
+        <ListView x:Name="tag_list" Margin="20,136,105,58.6" Grid.Row="1" Grid.Column="1" SelectionChanged="tag_list_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -55,8 +55,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-            <Button x:Name="addTag" Content="Create" HorizontalAlignment="Left" Grid.Column="1" Margin="205,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="addTag_Click"/>
+        <Button x:Name="addTag" Content="Create" HorizontalAlignment="Left" Grid.Column="1" Margin="205,80,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="addTag_Click"/>
         <Button x:Name="deleteAlbum" Content="Delete" HorizontalAlignment="Left" Grid.Column="0" Margin="20,350,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="deleteAlbum_Click"/>
+        <Button x:Name="deleteTag" Content="Delete" HorizontalAlignment="Left" Grid.Column="1" Margin="20,350,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="deleteTag_Click"/>
 
     </Grid>
 </Page>
