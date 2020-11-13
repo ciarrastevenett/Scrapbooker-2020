@@ -62,7 +62,7 @@ namespace Stage_Scrapbooker
             }
         }
 
-        private void addImageToFileTable(string fileName, string filePath, string fileFormat, long fileSize)
+        public void addImageToFileTable(string fileName, string filePath, string fileFormat, long fileSize)
         {
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
             Scrapbooker_Base.File imageObject = new Scrapbooker_Base.File()
@@ -73,7 +73,6 @@ namespace Stage_Scrapbooker
                 fileSize = fileSize
 
             };
-            Console.WriteLine(imageObject.fileName);
             db.Files.Add(imageObject);
             db.SaveChanges();
 

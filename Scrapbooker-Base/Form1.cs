@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Reflection;
 using System.Drawing.Imaging;
-
+using Scrapbooker_Base;
 
 namespace Stage_Scrapbooker
 {
@@ -94,15 +94,22 @@ namespace Stage_Scrapbooker
                // string filePath = Path + @"\ImagesFolder-Scrapbooker";
                 //save the image in some path with filename.
                 string Path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                string filePath = Path + @"\ImagesFolder-Scrapbooker\" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".jpeg";
+                string fileName = DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".jpeg";
+                string filePath = Path + @"\ImagesFolder-Scrapbooker\" + fileName;
 
-                if (File.Exists(filePath))
+                if (System.IO.File.Exists(filePath))
                 {
-                    File.Delete(filePath);
+                    System.IO.File.Delete(filePath);
                 }
 
                 imgFile.SaveFile(filePath);
                 pictureBox1.ImageLocation = filePath;
+
+                //Call function to save the img to our database
+                FileInfo fi = new FileInfo(filePath);
+                string fileFormat = fi.Extension;
+                long fileSize = fi.Length / 1000;
+                addImageToFileTable(fileName, filePath, fileFormat, fileSize);
 
 
             }
@@ -112,5 +119,22 @@ namespace Stage_Scrapbooker
                 }
 
             }
+
+        // responsible to save the img info in our db
+        private void addImageToFileTable(string fileName, string filePath, string fileFormat, long fileSize)
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            Scrapbooker_Base.File imageObject = new Scrapbooker_Base.File()
+            {
+                fileName = fileName,
+                filePath = filePath,
+                fileFormat = fileFormat,
+                fileSize = fileSize
+
+            };
+            db.Files.Add(imageObject);
+            db.SaveChanges();
+
         }
+    }
     }
