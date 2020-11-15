@@ -59,9 +59,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Dynamsoft.Twain">
-      <HintPath>..\..\..\..\..\..\Program Files\Dynamsoft\Dynamic .NET TWAIN 8.1.2\Redistributable\Assembly\For .NETFramework 4.0\Dynamsoft.Twain.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -125,7 +122,7 @@
     </Compile>
     <Compile Include="Tag.cs">
       <DependentUpon>ScrapbookerModels.tt</DependentUpon>
-     </Compile>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
