@@ -131,6 +131,7 @@ namespace Stage_Scrapbooker
                 fileFormat = fileFormat,
                 fileSize = fileSize
 
+
             };
             db.Files.Add(imageObject);
             db.SaveChanges();
