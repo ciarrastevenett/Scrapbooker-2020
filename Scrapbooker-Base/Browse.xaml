@@ -7,24 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Browse" Loaded="PageLoaded">
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="91*"/>
-            <ColumnDefinition Width="109*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Frame x:Name="TitleBar" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="Title" Text="Browse" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="32" Margin="90,0,0,0"/>
-        <!--
-        TODO: Fix it so the images will show side bi side and the user should be able to scroll the window
-        -->
-        <ListBox Name = "listBox" Grid.Row="1" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
-        <StackPanel Grid.Row="1" Name="simpleGrid" Margin="0,0,0,0" Grid.ColumnSpan="2">
-
-        </StackPanel>
+        <TextBlock x:Name="Title" Text="Browse" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="32" Margin ="30,0,0,0"/>
+        <ListBox Name="listBox" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" Orientation="Horizontal"  />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </Page>
