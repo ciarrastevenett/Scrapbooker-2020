@@ -26,6 +26,20 @@ namespace Stage_Scrapbooker
         {
             InitializeComponent();
 
+            // Start the connection with the DB
+            Scrapbooker_Base.ApplicationDBEntities1 db = new Scrapbooker_Base.ApplicationDBEntities1();
+
+            // Save all rows from the "Files" table inside an array
+            var images = from d in db.Files
+                         select d;
+            // Iterate over the array let us use the information in each row (singleImage)
+            foreach (var singleImage in images)
+            {
+                Console.WriteLine(singleImage.filePath); //The path for the image
+                Console.WriteLine(singleImage.id); //the ID - TO BE SEND with the click event when the user clicks in an image
+            }
+
+
         }
         //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
         //Reference to find files inside a folder: https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.getfiles?view=netcore-3.1
