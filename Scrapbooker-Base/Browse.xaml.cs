@@ -74,16 +74,15 @@ namespace Stage_Scrapbooker
 
         }
 
-        private void BtnClickSelect(object sender, RoutedEventArgs e)
+        
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (object item in listBox.Items)
             {
 
                 NavigationService.Navigate(new Uri("/DetailPage.xaml", UriKind.RelativeOrAbsolute));
             }
-            
         }
-
-        
     }
 }

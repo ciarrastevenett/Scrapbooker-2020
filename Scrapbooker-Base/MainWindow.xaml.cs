@@ -63,10 +63,7 @@ namespace Stage_Scrapbooker
             Main.Content = new Browse();
         }
 
-        private void BtnClickDetail(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new DetailPage();
-        }
+       
 
         private void BtnClickSettings(object sender, RoutedEventArgs e)
         {

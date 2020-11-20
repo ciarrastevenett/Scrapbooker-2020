@@ -34,7 +34,6 @@
             <Button Content="Scan" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickScan"/>
             <Button Content="Upload" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickUpload"/>
             <Button Content="Browse" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickBrowse"/>
-            <Button Content="Detail" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickDetail"/>
             <Button Content="Settings" Margin="25,70,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickSettings"/>
         </StackPanel>
 
