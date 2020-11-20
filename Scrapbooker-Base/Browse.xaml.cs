@@ -41,6 +41,9 @@ namespace Stage_Scrapbooker
 
 
         }
+
+        public object Main { get; private set; }
+
         //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
         //Reference to find files inside a folder: https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.getfiles?view=netcore-3.1
         public void PageLoaded(object sender, RoutedEventArgs args)
@@ -69,6 +72,17 @@ namespace Stage_Scrapbooker
                 listBox.Items.Add(simpleImage);
             }
 
+        }
+
+        
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (object item in listBox.Items)
+            {
+
+                NavigationService.Navigate(new Uri("/DetailPage.xaml", UriKind.RelativeOrAbsolute));
+            }
         }
     }
 }
