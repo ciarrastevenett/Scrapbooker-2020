@@ -14,12 +14,17 @@
         </Grid.RowDefinitions>
         <Frame x:Name="TitleBar" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="Title" Text="Browse" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="32" Margin ="30,0,0,0"/>
-        <ListBox Name="listBox" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox Name="listBox" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" Orientation="Horizontal"  />
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
+
+
         </ListBox>
+        <Button Content="See Details" HorizontalAlignment="Right" VerticalAlignment="Center" Width="75" Margin ="0,0,0,10" Click="BtnClickSelect"/>
+
     </Grid>
 </Page>
