@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Stage_Scrapbooker
 {
@@ -33,7 +23,7 @@ namespace Stage_Scrapbooker
             BitmapImage bi = new BitmapImage();
 
             bi.BeginInit();
-            bi.UriSource = new Uri(@"C:\Users\lucasmelorl\Desktop\photos\car.jpg", UriKind.RelativeOrAbsolute);
+            bi.UriSource = new Uri(@"\ImagesFolder-Scrapbooker", UriKind.RelativeOrAbsolute);
             bi.EndInit();
 
             simpleImage.Source = bi;
@@ -43,7 +33,7 @@ namespace Stage_Scrapbooker
 
             //Reference to get the file information: https://www.c-sharpcorner.com/UploadFile/mahesh/how-to-get-a-file-size-in-C-Sharp/
             // Full file name   
-            string imageFile = @"C:\Users\lucasmelorl\Desktop\photos\car.jpg;";
+            string imageFile = @"\ImagesFolder-Scrapbooker";
             FileInfo fi = new FileInfo(imageFile);
 
             // Get File Name  
@@ -55,6 +45,21 @@ namespace Stage_Scrapbooker
             // Get File Size 
             //long size = fi.Length;
             //FileName.Text = $"Size: {size}";
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
