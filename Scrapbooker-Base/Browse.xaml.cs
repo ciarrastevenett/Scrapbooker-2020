@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scrapbooker_Base;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
 
 namespace Stage_Scrapbooker
 {
@@ -53,6 +55,8 @@ namespace Stage_Scrapbooker
             string imageFolderPath = path + @"\ImagesFolder-Scrapbooker";
 
             string[] fileEntries = Directory.GetFiles(imageFolderPath);
+            // Get all images from DB
+
 
             // Loop and create images to add to screen
             foreach (string file in fileEntries)
@@ -74,7 +78,6 @@ namespace Stage_Scrapbooker
 
         }
 
-        
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
