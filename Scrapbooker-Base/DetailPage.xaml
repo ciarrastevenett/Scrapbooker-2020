@@ -10,9 +10,9 @@
 
     <Grid>
         <Button Content="Back" HorizontalAlignment="Left" Margin="75,100,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="Button_Click"/>
-        <Image HorizontalAlignment="Left" Height="720" Margin="75,200,0,0" VerticalAlignment="Top" Width="1280"/>
+        <Image HorizontalAlignment="Left" Height="720" Margin="75,200,0,0" VerticalAlignment="Top" Width="1280" Source="C:\Users\corom\Google Drive\Desktop Wallpapers/90 - UHD.jpg"/>
         <TextBox HorizontalAlignment="Left" Margin="1430,200,0,0" Text="Details&#xA;&#xA;" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Top" Width="415" Height="75" TextChanged="TextBox_TextChanged" FontSize="48" IsEnabled="False" SelectionOpacity="1"/>
         <TextBox HorizontalAlignment="Left" Margin="1430,300,0,0" Text="Date&#xD;&#xA;Time" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" Height="100" FontSize="36" TextChanged="TextBox_TextChanged_1"/>
-        <TextBox HorizontalAlignment="Left" Margin="1430,425,0,0" Text="(Resolution)&#xD;&#xA;&#xD;&#xA;(Size)" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" Height="495" FontSize="22" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox HorizontalAlignment="Left" Margin="1430,425,0,0" Text="(Resolution)&#xD;&#xA;&#xD;&#xA;(Size)" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" Height="495" FontSize="22"/>
     </Grid>
 </Page>
