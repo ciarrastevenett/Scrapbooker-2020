@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using Scrapbooker_Base;
 
 namespace Stage_Scrapbooker
 {
@@ -29,7 +30,7 @@ namespace Stage_Scrapbooker
             InitializeComponent();
 
             // Start the connection with the DB
-            Scrapbooker_Base.ApplicationDBEntities1 db = new Scrapbooker_Base.ApplicationDBEntities1();
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
 
             // Save all rows from the "Files" table inside an array
             var images = from d in db.Files
