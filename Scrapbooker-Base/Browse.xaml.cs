@@ -28,21 +28,6 @@ namespace Stage_Scrapbooker
         public Browse()
         {
             InitializeComponent();
-
-            // Start the connection with the DB
-            ApplicationDBEntities1 db = new ApplicationDBEntities1();
-
-            // Save all rows from the "Files" table inside an array
-            var images = from d in db.Files
-                         select d;
-            // Iterate over the array let us use the information in each row (singleImage)
-            foreach (var singleImage in images)
-            {
-                Console.WriteLine(singleImage.filePath); //The path for the image
-                Console.WriteLine(singleImage.id); //the ID - TO BE SEND with the click event when the user clicks in an image
-            }
-
-
         }
 
         public object Main { get; private set; }
@@ -52,15 +37,41 @@ namespace Stage_Scrapbooker
         public void PageLoaded(object sender, RoutedEventArgs args)
         {
             // Get all images from folder
-            string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string imageFolderPath = path + @"\ImagesFolder-Scrapbooker";
+            //string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //string imageFolderPath = path + @"\ImagesFolder-Scrapbooker";
 
-            string[] fileEntries = Directory.GetFiles(imageFolderPath);
+            //string[] fileEntries = Directory.GetFiles(imageFolderPath);
             // Get all images from DB
+            //*****************************************************************************************
+            // Start the connection with the DB
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
 
+            // Save all rows from the "Files" table inside an array
+            var images = from d in db.Files
+                         select d;
+            // Iterate over the array let us use the information in each row (singleImage)
+            foreach (var singleImage in images)
+            {
+
+                Image simpleImage = new Image();
+                simpleImage.Width = 200;
+                simpleImage.Margin = new Thickness(5);
+                //String id = singleImage.id.ToString(); //Holding the ID of the image
+                simpleImage.Tag = singleImage.id;
+
+                BitmapImage bi = new BitmapImage();
+
+                bi.BeginInit();
+                bi.UriSource = new Uri(singleImage.filePath, UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+
+                simpleImage.Source = bi;
+
+                listBox.Items.Add(simpleImage);
+            }
 
             // Loop and create images to add to screen
-            foreach (string file in fileEntries)
+/*            foreach (string file in fileEntries)
             {
                 Image simpleImage = new Image();
                 simpleImage.Width = 200;
@@ -75,18 +86,18 @@ namespace Stage_Scrapbooker
                 simpleImage.Source = bi;
 
                 listBox.Items.Add(simpleImage);
-            }
+            }*/
 
         }
 
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (object item in listBox.Items)
-            {
-
-                NavigationService.Navigate(new Uri("/DetailPage.xaml", UriKind.RelativeOrAbsolute));
-            }
+            dynamic elementSelected = listBox.SelectedItem as dynamic;
+            int currentID = elementSelected.Tag;
+            Console.WriteLine(currentID);
+            Details p2 = new Details(currentID);
+            NavigationService.Navigate(p2);
         }
     }
 }
