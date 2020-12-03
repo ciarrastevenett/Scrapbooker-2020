@@ -42,9 +42,10 @@ namespace Scrapbooker_Base
 
             foreach (var el in images)
             {
-                Console.WriteLine(el.fileName); //Name of the file
-                Console.WriteLine(el.fileFormat); //Format (jpg, png, etc..)
-                Console.WriteLine(el.fileSize); // Size in KB
+                //Name of the file
+                FileName.Text = $"{el.fileName}";
+                // Size in KB
+                FileSize.Text = $"{el.fileSize} KB";
 
                 //Display the image on the screen
                 var uriSource = new Uri(el.filePath, UriKind.RelativeOrAbsolute);
