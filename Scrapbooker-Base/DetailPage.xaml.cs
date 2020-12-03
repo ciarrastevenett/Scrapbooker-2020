@@ -15,7 +15,7 @@ namespace Stage_Scrapbooker
         {
             InitializeComponent();
 
-            //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
+/*            //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
             Image simpleImage = new Image();
             simpleImage.Width = 200;
             simpleImage.Margin = new Thickness(5);
@@ -44,7 +44,7 @@ namespace Stage_Scrapbooker
             FileFormat.Text = $"Type: {extn}";
             // Get File Size 
             //long size = fi.Length;
-            //FileName.Text = $"Size: {size}";
+            //FileName.Text = $"Size: {size}";*/
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

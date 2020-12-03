@@ -28,7 +28,21 @@ namespace Stage_Scrapbooker
         public Browse()
         {
             InitializeComponent();
+        }
 
+        public object Main { get; private set; }
+
+        //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
+        //Reference to find files inside a folder: https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.getfiles?view=netcore-3.1
+        public void PageLoaded(object sender, RoutedEventArgs args)
+        {
+            // Get all images from folder
+            //string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //string imageFolderPath = path + @"\ImagesFolder-Scrapbooker";
+
+            //string[] fileEntries = Directory.GetFiles(imageFolderPath);
+            // Get all images from DB
+            //*****************************************************************************************
             // Start the connection with the DB
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
 
@@ -40,27 +54,24 @@ namespace Stage_Scrapbooker
             {
                 Console.WriteLine(singleImage.filePath); //The path for the image
                 Console.WriteLine(singleImage.id); //the ID - TO BE SEND with the click event when the user clicks in an image
+
+                Image simpleImage = new Image();
+                simpleImage.Width = 200;
+                simpleImage.Margin = new Thickness(5);
+
+                BitmapImage bi = new BitmapImage();
+
+                bi.BeginInit();
+                bi.UriSource = new Uri(singleImage.filePath, UriKind.RelativeOrAbsolute);
+                bi.EndInit();
+
+                simpleImage.Source = bi;
+
+                listBox.Items.Add(simpleImage);
             }
 
-
-        }
-
-        public object Main { get; private set; }
-
-        //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
-        //Reference to find files inside a folder: https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.getfiles?view=netcore-3.1
-        public void PageLoaded(object sender, RoutedEventArgs args)
-        {
-            // Get all images from folder
-            string path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string imageFolderPath = path + @"\ImagesFolder-Scrapbooker";
-
-            string[] fileEntries = Directory.GetFiles(imageFolderPath);
-            // Get all images from DB
-
-
             // Loop and create images to add to screen
-            foreach (string file in fileEntries)
+/*            foreach (string file in fileEntries)
             {
                 Image simpleImage = new Image();
                 simpleImage.Width = 200;
@@ -75,17 +86,17 @@ namespace Stage_Scrapbooker
                 simpleImage.Source = bi;
 
                 listBox.Items.Add(simpleImage);
-            }
+            }*/
 
         }
 
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            String name = "mike";
             foreach (object item in listBox.Items)
             {
-
-                NavigationService.Navigate(new Uri("/DetailPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("/DetailPage.xaml", UriKind.RelativeOrAbsolute),name);
             }
         }
     }
