@@ -36,6 +36,7 @@ namespace Scrapbooker_Base
         {
             InitializeComponent();
 
+            //Initial setting for the Combobox (Dropdown) with the albums (NO NEED TO CHANGE)
             DataContext = this;
             cbItems = new ObservableCollection<ComboBoxItem>();
             var cbItem = new ComboBoxItem { Content = "<--Select-->" };
@@ -62,11 +63,13 @@ namespace Scrapbooker_Base
                 var uriSource = new Uri(el.filePath, UriKind.RelativeOrAbsolute);
                 singleImage.Source = new BitmapImage(uriSource);
 
+                //Query the Albums table to get a list of albuns availables
                 var albums = from d in db.Albums
                              select d;
 
                 foreach (var alb in albums)
                 {
+                    //For every "album", display on our combobox
                     cbItems.Add(new ComboBoxItem { Content = alb.albumName });
                 }
             }
