@@ -1,18 +1,18 @@
-﻿<Page x:Class="Stage_Scrapbooker.DetailPage"
+﻿<Page x:Class="Scrapbooker_Base.Details"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Stage_Scrapbooker"
+      xmlns:local="clr-namespace:Scrapbooker_Base"
       mc:Ignorable="d" 
-       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DetailPage">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Details">
 
     <Grid>
         <Grid.RowDefinitions>
-        <RowDefinition Height="50"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="120"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -21,8 +21,6 @@
             <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Name="listDetailPage" Grid.Row="1" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-            
-        </ListBox>
+        <Image x:Name="singleImage" Grid.Row="1" Grid.Column="1"></Image>
     </Grid>
 </Page>

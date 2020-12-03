@@ -52,12 +52,12 @@ namespace Stage_Scrapbooker
             // Iterate over the array let us use the information in each row (singleImage)
             foreach (var singleImage in images)
             {
-                Console.WriteLine(singleImage.filePath); //The path for the image
-                Console.WriteLine(singleImage.id); //the ID - TO BE SEND with the click event when the user clicks in an image
 
                 Image simpleImage = new Image();
                 simpleImage.Width = 200;
                 simpleImage.Margin = new Thickness(5);
+                //String id = singleImage.id.ToString(); //Holding the ID of the image
+                simpleImage.Tag = singleImage.id;
 
                 BitmapImage bi = new BitmapImage();
 
@@ -93,11 +93,11 @@ namespace Stage_Scrapbooker
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String name = "mike";
-            foreach (object item in listBox.Items)
-            {
-                NavigationService.Navigate(new Uri("/DetailPage.xaml", UriKind.RelativeOrAbsolute),name);
-            }
+            dynamic elementSelected = listBox.SelectedItem as dynamic;
+            int currentID = elementSelected.Tag;
+            Console.WriteLine(currentID);
+            Details p2 = new Details(currentID);
+            NavigationService.Navigate(p2);
         }
     }
 }
