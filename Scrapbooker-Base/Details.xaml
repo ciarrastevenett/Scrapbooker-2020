@@ -29,8 +29,7 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Margin="50,69.4,0,20.6">
             <Label Content="Abum:" HorizontalAlignment="Left" Name="AlbumLabel" FontSize="15"  FontWeight="Bold" />
-            <ComboBox Width="210" Height="30">
-                <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
+            <ComboBox x:Name="listAlbums" ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" Width="210" Height="30">
             </ComboBox>
         </StackPanel>
     </Grid>

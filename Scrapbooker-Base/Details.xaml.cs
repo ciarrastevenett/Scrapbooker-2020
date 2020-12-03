@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -19,9 +20,13 @@ namespace Scrapbooker_Base
     /// <summary>
     /// Interaction logic for Details.xaml
     /// </summary>
+    /// 
     public partial class Details : Page
     {
         int imgID;
+
+        public ObservableCollection<ComboBoxItem> cbItems { get; set; }
+        public ComboBoxItem SelectedcbItem { get; set; }
         public Details()
         {
             InitializeComponent();
@@ -30,6 +35,12 @@ namespace Scrapbooker_Base
         public Details(int imageID)
         {
             InitializeComponent();
+
+            DataContext = this;
+            cbItems = new ObservableCollection<ComboBoxItem>();
+            var cbItem = new ComboBoxItem { Content = "<--Select-->" };
+            SelectedcbItem = cbItem;
+            cbItems.Add(cbItem);
 
             //Store the IF of the image
             this.imgID = imageID;
@@ -50,6 +61,14 @@ namespace Scrapbooker_Base
                 //Display the image on the screen
                 var uriSource = new Uri(el.filePath, UriKind.RelativeOrAbsolute);
                 singleImage.Source = new BitmapImage(uriSource);
+
+                var albums = from d in db.Albums
+                             select d;
+
+                foreach (var alb in albums)
+                {
+                    cbItems.Add(new ComboBoxItem { Content = alb.albumName });
+                }
             }
 
         }

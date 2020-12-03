@@ -95,7 +95,6 @@ namespace Stage_Scrapbooker
         {
             dynamic elementSelected = listBox.SelectedItem as dynamic;
             int currentID = elementSelected.Tag;
-            Console.WriteLine(currentID);
             Details p2 = new Details(currentID);
             NavigationService.Navigate(p2);
         }
