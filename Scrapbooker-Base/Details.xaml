@@ -35,7 +35,7 @@
 
             <StackPanel Orientation="Vertical">
                 <Label Content="Abums:"  HorizontalAlignment="Left" x:Name="AlbumLabel" FontSize="15"  FontWeight="Bold" />
-                <ListView x:Name="album_list" Grid.Row="1" Grid.Column="0" SelectionChanged="album_list_SelectionChanged">
+                <ListView x:Name="album_list" Grid.Row="1" Grid.Column="0" SelectionChanged="album_list_SelectionChanged" Height="166">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
