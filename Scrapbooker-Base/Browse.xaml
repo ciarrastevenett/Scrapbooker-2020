@@ -13,8 +13,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Frame x:Name="TitleBar" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="Title" Text="Browse" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="32" Margin ="30,0,0,0"/>
-        <ListBox Name="listBox" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listBox_SelectionChanged" >
+        <TextBlock x:Name="Title" Text="🗂Browse" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontFamily="Century Gothic" FontWeight="Bold" Margin="40,19,0,10"/>
+        <ListBox Name="listBox" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listBox_SelectionChanged" Margin="20">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel IsItemsHost="True" Orientation="Horizontal"  />

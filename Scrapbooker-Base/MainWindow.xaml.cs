@@ -7,6 +7,8 @@ using Scrapbooker_Base;
 using WIA;
 using System.Windows.Forms;
 using System.Windows.Forms.Integration;
+using ModernWpf.Controls;
+using System.Linq;
 
 // TODO: Separate necessary classes/methods/namespace
 
@@ -19,8 +21,10 @@ namespace Stage_Scrapbooker
         public MainWindow()
         {
             InitializeComponent();
+            //Makes the app start on the center of the screen
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-            Main.Content = new Upload();
+            ContentFrame.Content = new Upload();
 
             /*
              * Process to create the main folder to store the app's images in 4 steps
@@ -44,7 +48,7 @@ namespace Stage_Scrapbooker
 
         }
 
-        private void BtnClickUpload(object sender, RoutedEventArgs e)
+/*        private void BtnClickUpload(object sender, RoutedEventArgs e)
         {
             //Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
             //op.Title = "Select a picture";
@@ -55,28 +59,57 @@ namespace Stage_Scrapbooker
             //{
             //    imgPhoto.Source = new BitmapImage(new Uri(op.FileName));
             //}
-            Main.Content = new Upload();
-        }
+            ContentFrame.Content = new Upload();
+        }*/
 
-        private void BtnClickBrowse(object sender, RoutedEventArgs e)
+        private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            Main.Content = new Browse();
+
+/*            // set the initial SelectedItem 
+            foreach (NavigationViewItemBase item in NavView.MenuItems)
+            {
+                if (item is NavigationViewItem && item.Tag.ToString() == "home")
+                {
+                    NavView.SelectedItem = item;
+                    break;
+                }
+            }*/
         }
 
-       
-
-        private void BtnClickSettings(object sender, RoutedEventArgs e)
+        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
-            Main.Content = new SettingsPage();
-        }
-        
-        private void BtnClickScan(object sender, RoutedEventArgs e)
-        {
-            Form1 scanForm = new Form1();
-            //this.Visibility = Visibility.Hidden;
-            scanForm.Show();
+            if (args.IsSettingsInvoked)
+            {
+                ContentFrame.Content = new SettingsPage();
+            }
+            else
+            {
+                var item = sender.MenuItems.OfType<NavigationViewItem>().First(x => (string)x.Content == (string)args.InvokedItem);
+                NavView_Navigate(item as NavigationViewItem);
+            }
         }
 
+        private void NavView_Navigate(NavigationViewItem item)
+        {
+            if (item.Tag.Equals("scan"))
+            {
+                Form1 scanForm = new Form1();
+                scanForm.Show();
+            }
+            else
+            {
+                switch (item.Tag)
+                {
+                    case "browse":
+                        ContentFrame.Content = new Browse();
+                        break;
+
+                    case "upload":
+                        ContentFrame.Content = new Upload();
+                        break;
+                }
+            }
+        }
     }
 }
     

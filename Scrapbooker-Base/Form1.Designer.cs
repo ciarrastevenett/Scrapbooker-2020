@@ -45,19 +45,19 @@ namespace Stage_Scrapbooker
             this.panel1.Controls.Add(this.btnScan);
             this.panel1.Controls.Add(this.lstListOfScanner);
             this.panel1.Controls.Add(this.lblListOfScanner);
-            this.panel1.Location = new System.Drawing.Point(26, 25);
-            this.panel1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panel1.Location = new System.Drawing.Point(17, 16);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(416, 467);
+            this.panel1.Size = new System.Drawing.Size(277, 299);
             this.panel1.TabIndex = 0;
             // 
             // btnScan
             // 
             this.btnScan.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScan.Location = new System.Drawing.Point(12, 308);
-            this.btnScan.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnScan.Location = new System.Drawing.Point(8, 197);
+            this.btnScan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnScan.Name = "btnScan";
-            this.btnScan.Size = new System.Drawing.Size(374, 60);
+            this.btnScan.Size = new System.Drawing.Size(249, 38);
             this.btnScan.TabIndex = 1;
             this.btnScan.Text = "Scan";
             this.btnScan.UseVisualStyleBackColor = true;
@@ -67,46 +67,46 @@ namespace Stage_Scrapbooker
             // 
             this.lstListOfScanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstListOfScanner.FormattingEnabled = true;
-            this.lstListOfScanner.ItemHeight = 30;
-            this.lstListOfScanner.Location = new System.Drawing.Point(12, 75);
-            this.lstListOfScanner.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lstListOfScanner.ItemHeight = 20;
+            this.lstListOfScanner.Location = new System.Drawing.Point(8, 48);
+            this.lstListOfScanner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstListOfScanner.Name = "lstListOfScanner";
-            this.lstListOfScanner.Size = new System.Drawing.Size(370, 154);
+            this.lstListOfScanner.Size = new System.Drawing.Size(248, 84);
             this.lstListOfScanner.TabIndex = 1;
             // 
             // lblListOfScanner
             // 
             this.lblListOfScanner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListOfScanner.Location = new System.Drawing.Point(6, 23);
-            this.lblListOfScanner.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblListOfScanner.Location = new System.Drawing.Point(4, 15);
+            this.lblListOfScanner.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblListOfScanner.Name = "lblListOfScanner";
-            this.lblListOfScanner.Size = new System.Drawing.Size(380, 44);
+            this.lblListOfScanner.Size = new System.Drawing.Size(253, 28);
             this.lblListOfScanner.TabIndex = 0;
             this.lblListOfScanner.Text = "List Of Scanner";
             this.lblListOfScanner.Click += new System.EventHandler(this.lblListOfScanner_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(536, 25);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(357, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(560, 467);
+            this.pictureBox1.Size = new System.Drawing.Size(373, 299);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 569);
+            this.ClientSize = new System.Drawing.Size(804, 364);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Select Scanner";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
