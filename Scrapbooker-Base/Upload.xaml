@@ -15,10 +15,10 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Welcome to Scrapbooker!" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+        <TextBlock Grid.Row="0" HorizontalAlignment="left" VerticalAlignment="Center" FontSize="25" FontFamily="Century Gothic" FontWeight="Bold" Margin="40,19,0,10"><Run Text=" 📷 "/><Run FontWeight="Normal" Text="Welcome to "/><Run Text="Scrapbooker!"/></TextBlock>
         <Label x:Name="FileNameLabel" Content="" Panel.ZIndex="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
-        <StackPanel x:Name="FileDropStackPanel" Grid.Row="1" AllowDrop="true" Background="LightGoldenrodYellow" Margin="40,0,40,0" Drop="FileDropStackPanel_Drop">
-            <Label Content="Drop Images Here" Margin="0,90,0,0" HorizontalAlignment="Center"/>
+        <StackPanel x:Name="FileDropStackPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" AllowDrop="true" Background="#FFEBFFF8" Margin="91,47,95,80.6" Drop="FileDropStackPanel_Drop">
+            <Label Content="Drop Images Here" Margin="250,120,250,120"/>
         </StackPanel>
     </Grid>
 </Page>

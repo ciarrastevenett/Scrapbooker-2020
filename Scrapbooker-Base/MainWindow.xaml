@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Stage_Scrapbooker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000">
+        Title="Scrapbooker" Height="590" Width="1000"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
     <Window.Resources>
         <Style x:Key="HorizontalStackPanel" TargetType="{x:Type StackPanel}">
             <Setter Property="Orientation" Value="Horizontal" />
@@ -16,27 +18,27 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="146*"/>
-            <ColumnDefinition Width="33*"/>
-            <ColumnDefinition Width="466*"/>
-        </Grid.ColumnDefinitions>
-        <Image Margin="12,12,16,70.5"
-               Name="imgPhoto"
-               Stretch="Fill" 
-               Grid.Column="1" Grid.ColumnSpan="3"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ui:NavigationView Grid.Row="0"
+            x:Name="NavView"
+            IsBackButtonVisible="Collapsed"
+            PaneDisplayMode="Top"
+            IsBackEnabled="False"
+            IsPaneOpen="True"
+            ItemInvoked="NavView_ItemInvoked"
+            Loaded="NavView_Loaded">
 
-
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="330" Margin="10,130,10.4,10.4" Width="130">
-            <Button Content="Scan" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickScan"/>
-            <Button Content="Upload" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickUpload"/>
-            <Button Content="Browse" Margin="25,10,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickBrowse"/>
-            <Button Content="Settings" Margin="25,70,0,10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="BtnClickSettings"/>
-        </StackPanel>
-
-        <Frame x:Name="Main" Grid.Column="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="3" Margin="0,0,0,0.5"/>
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Icon="Scan" Content="Scan" Tag="scan"/>
+                <ui:NavigationViewItem Icon="Upload" Content="Upload" Tag="upload"/>
+                <ui:NavigationViewItem Icon="Home" Content="Browse" Tag="browse"/>
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
+        <Frame x:Name="ContentFrame" Margin="5" Grid.Row="1" NavigationUIVisibility="Hidden">
+        </Frame>
     </Grid>
 </Window>
