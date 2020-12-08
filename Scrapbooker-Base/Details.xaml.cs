@@ -24,7 +24,7 @@ namespace Scrapbooker_Base
     public partial class Details : Page
     {
         int imgID;
-
+        private int albumSelected;
         public ObservableCollection<ComboBoxItem> cbItems { get; set; }
         public ComboBoxItem SelectedcbItem { get; set; }
         public Details()
@@ -35,6 +35,7 @@ namespace Scrapbooker_Base
         public Details(int imageID)
         {
             InitializeComponent();
+            this.loadAbums();
 
             //Initial setting for the Combobox (Dropdown) with the albums (NO NEED TO CHANGE)
             DataContext = this;
@@ -74,6 +75,52 @@ namespace Scrapbooker_Base
                 }
             }
 
+        }
+
+        private void album_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Album album = (Album)album_list.SelectedItem;
+            if (album is object)
+            {
+                albumSelected = album.id;
+            };
+        }
+
+        private void addAalbum_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            Album albumObject = new Album()
+            {
+                albumName = album_name.Text,
+            };
+
+            db.Albums.Add(albumObject);
+            db.SaveChanges();
+            this.loadAbums();
+
+        }
+
+        private void deleteAlbum_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            var selectedItem = from el in db.Albums
+                               where el.id == this.albumSelected
+                               select el;
+
+            Album albumToDelete = selectedItem.SingleOrDefault();
+
+            if (albumToDelete != null)
+            {
+                db.Albums.Remove(albumToDelete);
+                db.SaveChanges();
+            }
+            this.loadAbums();
+        }
+
+        private void loadAbums()
+        {
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            this.album_list.ItemsSource = db.Albums.ToList();
         }
     }
 }
