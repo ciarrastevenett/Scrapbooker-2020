@@ -17,7 +17,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
 
         <Image x:Name="singleImage" Grid.Row="0" Grid.Column="1" Height="250" HorizontalAlignment="Left"></Image>
@@ -26,9 +26,29 @@
         <Label Content="Size:" HorizontalAlignment="Left" Name="SizeLabel" FontSize="15" Grid.Row="2" Grid.Column="1" Margin ="0,40,0,0" FontWeight="Bold" />
         <TextBlock x:Name="FileSize" Text="75KB" Grid.Row="2" Grid.Column="1" FontSize="15" Margin="47.6,40.4,443,50.6"/>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="2" Margin="50,35,0,20.6">
-            <Label Content="Abum:" Margin="0,5,0,0" HorizontalAlignment="Left" x:Name="AlbumLabel" FontSize="15"  FontWeight="Bold" />
-            <ComboBox x:Name="listAlbums" Margin="10,0,0,0" ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" Width="210" Height="30"/>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">
+            <ComboBox x:Name="listAlbums" Margin="00,0,0,0" ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" Width="210" Height="30"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="addAalbum" Content="Create" Margin="0,10,10,0" HorizontalAlignment="Left" Grid.Column="0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="addAalbum_Click"/>
+                <Button x:Name="deleteAlbum" Content="Delete" Margin="0,10,0,0" HorizontalAlignment="Left" Grid.Column="0"  Grid.Row="1" VerticalAlignment="Top" Width="75" Click="deleteAlbum_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <Label Content="Abums:"  HorizontalAlignment="Left" x:Name="AlbumLabel" FontSize="15"  FontWeight="Bold" />
+                <ListView x:Name="album_list" Grid.Row="1" Grid.Column="0" SelectionChanged="album_list_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <!-- <TextBlock Text="ID: " />
+                        <TextBlock Text="{Binding id}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="Album: " /> -->
+                                <TextBlock Text="{Binding albumName}" FontWeight="Bold" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
