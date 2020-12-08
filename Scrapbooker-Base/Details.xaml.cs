@@ -24,6 +24,7 @@ namespace Scrapbooker_Base
     public partial class Details : Page
     {
         int imgID;
+        int albumSelectedToAddRemove;
         private int albumSelected;
         public ObservableCollection<ComboBoxItem> cbItems { get; set; }
         public ComboBoxItem SelectedcbItem { get; set; }
@@ -71,57 +72,74 @@ namespace Scrapbooker_Base
                 foreach (var alb in albums)
                 {
                     //For every "album", display on our combobox
-                    cbItems.Add(new ComboBoxItem { Content = alb.albumName });
+                    cbItems.Add(new ComboBoxItem { Content = alb.albumName, Tag = alb.id });
                 }
             }
 
         }
 
+        private void album_list_Main_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem typeItem = (ComboBoxItem)listAlbums.SelectedItem;
+            string contentName = typeItem.Content.ToString();
+
+            Console.WriteLine("album name: " + contentName);
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            var selectedItem = from el in db.Albums
+                               where el.albumName == contentName
+                               select el;
+
+            if(selectedItem.FirstOrDefault<Album>() != null)
+            {
+                albumSelectedToAddRemove = selectedItem.FirstOrDefault<Album>().id;
+            }
+        }
+
         private void album_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // TO DO: Make sure that I am receiving the ID of the selected Album
             Album album = (Album)album_list.SelectedItem;
             if (album is object)
             {
+                //ID of Albu selected
                 albumSelected = album.id;
+                Console.WriteLine(albumSelected);
             };
         }
 
-        private void addAalbum_Click(object sender, RoutedEventArgs e)
+        private void addAlbum_Click(object sender, RoutedEventArgs e)
         {
             //TO DO: Grab selected album and add image to DB ImagesAlbums
             // Re-load the list
 
-            /*            ApplicationDBEntities1 db = new ApplicationDBEntities1();
-                        Album albumObject = new Album()
-                        {
-                            albumName = album_name.Text,
-                        };
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            ImagesInAlbum albumObject = new ImagesInAlbum()
+            {
+                fileID = this.imgID,
+                albumID = albumSelectedToAddRemove
+            };
 
-                        db.Albums.Add(albumObject);
-                        db.SaveChanges();
-                        this.loadAbums();*/
+            db.ImagesInAlbums.Add(albumObject);
+            db.SaveChanges();
+            this.loadAbums();
 
         }
 
         private void deleteAlbum_Click(object sender, RoutedEventArgs e)
         {
-            //TO DO: Grab selected album and remove from the DB ImagesAlbums
-            // Re-load the list
-
-/*            ApplicationDBEntities1 db = new ApplicationDBEntities1();
-            var selectedItem = from el in db.Albums
-                               where el.id == this.albumSelected
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            var selectedItem = from el in db.ImagesInAlbums
+                               where el.fileID == this.imgID &&
+                                el.albumID == this.albumSelected
                                select el;
 
-            Album albumToDelete = selectedItem.SingleOrDefault();
+            ImagesInAlbum albumToDelete = selectedItem.SingleOrDefault();
 
             if (albumToDelete != null)
             {
-                db.Albums.Remove(albumToDelete);
+                db.ImagesInAlbums.Remove(albumToDelete);
                 db.SaveChanges();
             }
-            this.loadAbums();*/
+            this.loadAbums();
         }
 
         private void loadAbums()
