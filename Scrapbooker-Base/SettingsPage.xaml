@@ -24,7 +24,7 @@
         <TextBlock Text="New Album" FontSize="20" Grid.Row="1" Grid.Column="0" Margin="40,20,0,19.6"/>
         <Label Grid.Row="1" Grid.Column="0" Margin="40,50,0,19.6">Name:</Label>
         <TextBox x:Name="album_name" HorizontalAlignment="Left" Height="23" Margin="41,82,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180"/>
-        <ListView x:Name="album_list" Margin="50,136,105,58.6" Grid.Row="1" Grid.Column="0" SelectionChanged="album_list_SelectionChanged">
+        <ListView x:Name="album_list" Height="200" Margin="50,100,105,58.6" Grid.Row="1" Grid.Column="0" SelectionChanged="album_list_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
