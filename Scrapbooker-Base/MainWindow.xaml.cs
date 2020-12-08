@@ -93,8 +93,11 @@ namespace Stage_Scrapbooker
         {
             if (item.Tag.Equals("scan"))
             {
+               
                 Form1 scanForm = new Form1();
-                scanForm.Show();
+                scanForm.ShowDialog();
+                scanForm.BringToFront();
+
             }
             else
             {

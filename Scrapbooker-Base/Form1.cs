@@ -64,7 +64,7 @@ namespace Stage_Scrapbooker
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-           try
+            try
             {
 
                 var deviceManager = new DeviceManager();
@@ -86,12 +86,12 @@ namespace Stage_Scrapbooker
                 var device = AvailableScanner.Connect(); //Connect to the available scanner.
 
                 var ScannerItem = device.Items[1]; // select the scanner.
-            
+
 
                 var imgFile = (ImageFile)ScannerItem.Transfer(FormatID.wiaFormatJPEG); //Retrive an image in Jpg format and store it into a variable.
 
                 //string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-               // string filePath = Path + @"\ImagesFolder-Scrapbooker";
+                // string filePath = Path + @"\ImagesFolder-Scrapbooker";
                 //save the image in some path with filename.
                 string Path = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                 string fileName = DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".jpeg";
@@ -111,14 +111,16 @@ namespace Stage_Scrapbooker
                 long fileSize = fi.Length / 1000;
                 addImageToFileTable(fileName, filePath, fileFormat, fileSize);
 
+                
+
 
             }
             catch (COMException ex)
-                {
+            {
                 MessageBox.Show(ex.Message);
-                }
-
             }
+
+        }
 
         // responsible to save the img info in our db
         private void addImageToFileTable(string fileName, string filePath, string fileFormat, long fileSize)
@@ -137,5 +139,7 @@ namespace Stage_Scrapbooker
             db.SaveChanges();
 
         }
+
+
     }
     }
