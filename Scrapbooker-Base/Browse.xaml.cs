@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using Scrapbooker_Base;
+using System.Data;
+using System.Collections.ObjectModel;
 
 namespace Stage_Scrapbooker
 {
@@ -25,9 +27,13 @@ namespace Stage_Scrapbooker
     /// </summary>
     public partial class Browse : Page
     {
+        public ObservableCollection<ComboBoxItem> cbItems { get; set; }
+        public ComboBoxItem SelectedcbItem { get; set; }
         public Browse()
         {
             InitializeComponent();
+
+            
         }
 
         public object Main { get; private set; }
@@ -45,6 +51,21 @@ namespace Stage_Scrapbooker
             //*****************************************************************************************
             // Start the connection with the DB
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
+
+            DataContext = this;
+            cbItems = new ObservableCollection<ComboBoxItem>();
+            var cbItem = new ComboBoxItem { Content = "<--Select-->" };
+            SelectedcbItem = cbItem;
+            cbItems.Add(cbItem);
+
+
+            var albums = from d in db.Albums
+                         select d;
+            foreach (var alb in albums)
+            {
+                //For every "album", display on our combobox
+                cbItems.Add(new ComboBoxItem { Content = alb.albumName, Tag = alb.id });
+            }
 
             // Save all rows from the "Files" table inside an array
             var images = from d in db.Files
@@ -98,5 +119,9 @@ namespace Stage_Scrapbooker
             Details p2 = new Details(currentID);
             NavigationService.Navigate(p2);
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
     }
 }

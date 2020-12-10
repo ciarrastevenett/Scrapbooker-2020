@@ -10,9 +10,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-        <RowDefinition Height="50"/>
-        <RowDefinition Height="*"/>
-        <RowDefinition Height="120"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="120"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
 
         <ListBox Name="listDetailPage" Grid.Row="1" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-            
+
         </ListBox>
     </Grid>
 </Page>
