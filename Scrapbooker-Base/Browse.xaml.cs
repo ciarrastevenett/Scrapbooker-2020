@@ -142,6 +142,7 @@ namespace Stage_Scrapbooker
                                select el;
             if (selectedItem.FirstOrDefault<Album>() != null)
             {
+                listBox.Items.Clear();
                 //Query the DB
                 var selectedAlbum = from el in db.ImagesInAlbums
                                     join b in db.Files
