@@ -14,6 +14,8 @@ namespace Scrapbooker_Base
     
     public partial class Album
     {
+        internal string filePath;
+
         public int id { get; set; }
         public string albumName { get; set; }
     }

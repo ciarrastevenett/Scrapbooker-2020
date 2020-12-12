@@ -16,7 +16,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
-using Scrapbooker_Base;
 using System.Data;
 using System.Collections.ObjectModel;
 
@@ -27,16 +26,21 @@ namespace Stage_Scrapbooker
     /// </summary>
     public partial class Browse : Page
     {
+        private int imgID;
+        private int albumSelected;
+
         public ObservableCollection<ComboBoxItem> cbItems { get; set; }
         public ComboBoxItem SelectedcbItem { get; set; }
+        public object Main { get; private set; }
+
+
         public Browse()
         {
             InitializeComponent();
+          
 
-            
         }
 
-        public object Main { get; private set; }
 
         //Reference for displaying one picture: http://www.java2s.com/Tutorial/CSharp/0470__Windows-Presentation-Foundation/Loadimageinyourcodeandaddtogrid.htm
         //Reference to find files inside a folder: https://docs.microsoft.com/en-us/dotnet/api/system.io.directory.getfiles?view=netcore-3.1
@@ -67,7 +71,6 @@ namespace Stage_Scrapbooker
                 cbItems.Add(new ComboBoxItem { Content = alb.albumName, Tag = alb.id });
             }
 
-            // Save all rows from the "Files" table inside an array
             var images = from d in db.Files
                          select d;
             // Iterate over the array let us use the information in each row (singleImage)
@@ -91,27 +94,28 @@ namespace Stage_Scrapbooker
                 listBox.Items.Add(simpleImage);
             }
 
-            // Loop and create images to add to screen
-/*            foreach (string file in fileEntries)
-            {
-                Image simpleImage = new Image();
-                simpleImage.Width = 200;
-                simpleImage.Margin = new Thickness(5);
-
-                BitmapImage bi = new BitmapImage();
-
-                bi.BeginInit();
-                bi.UriSource = new Uri(file, UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-
-                simpleImage.Source = bi;
-
-                listBox.Items.Add(simpleImage);
-            }*/
-
         }
+      
 
+        // Loop and create images to add to screen
+        /*            foreach (string file in fileEntries)
+                    {
+                        Image simpleImage = new Image();
+                        simpleImage.Width = 200;
+                        simpleImage.Margin = new Thickness(5);
 
+                        BitmapImage bi = new BitmapImage();
+
+                        bi.BeginInit();
+                        bi.UriSource = new Uri(file, UriKind.RelativeOrAbsolute);
+                        bi.EndInit();
+
+                        simpleImage.Source = bi;
+
+                        listBox.Items.Add(simpleImage);
+                    }*/
+
+    
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dynamic elementSelected = listBox.SelectedItem as dynamic;
@@ -120,8 +124,55 @@ namespace Stage_Scrapbooker
             NavigationService.Navigate(p2);
         }
 
+        private void PopulateListBox()
+        {
+            listBox.Items.Clear();
+            
+        }
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           
+            ComboBoxItem typeItem = (ComboBoxItem)listAlbums.SelectedItem;
+            string contentName = typeItem.Content.ToString();
+
+            Console.WriteLine("album name: " + contentName);
+            ApplicationDBEntities1 db = new ApplicationDBEntities1();
+            var selectedItem = from el in db.Albums
+                               where el.albumName == contentName
+                               select el;
+            if (selectedItem.FirstOrDefault<Album>() != null)
+            {
+                //Query the DB
+                var selectedAlbum = from el in db.ImagesInAlbums
+                                    join b in db.Files
+                                    on el.albumID equals b.id
+                                    where el.fileID == this.imgID
+                                    select b;
+
+                foreach (var singleImage in selectedAlbum)
+                {
+                    Image simpleImage = new Image();
+                    simpleImage.Width = 200;
+                    simpleImage.Margin = new Thickness(5);
+                    //String id = singleImage.id.ToString(); //Holding the ID of the image
+                    simpleImage.Tag = singleImage.id;
+
+                    BitmapImage bi = new BitmapImage();
+
+                    bi.BeginInit();
+                    bi.UriSource = new Uri(singleImage.filePath, UriKind.RelativeOrAbsolute);
+                    bi.EndInit();
+
+                    simpleImage.Source = bi;
+
+                    listBox.Items.Add(simpleImage);
+
+                }
+            }
+               
+
+        }
+
+            
     }
 }

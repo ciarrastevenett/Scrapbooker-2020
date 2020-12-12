@@ -103,7 +103,7 @@ namespace Scrapbooker_Base
                 //ID of Albu selected
                 albumSelected = album.id;
                 Console.WriteLine(albumSelected);
-            };
+            }
         }
 
         private void addAlbum_Click(object sender, RoutedEventArgs e)
