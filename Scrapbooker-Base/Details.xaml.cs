@@ -147,7 +147,7 @@ namespace Scrapbooker_Base
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
             var selectedItem = from el in db.ImagesInAlbums
                                join b in db.Albums
-                                on el.albumID equals b.id
+                               on el.albumID equals b.id
                                where el.fileID == this.imgID
                                select b;
 

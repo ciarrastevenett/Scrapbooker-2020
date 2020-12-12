@@ -144,11 +144,13 @@ namespace Stage_Scrapbooker
             {
                 listBox.Items.Clear();
                 //Query the DB
-                var selectedAlbum = from el in db.ImagesInAlbums
-                                    join b in db.Files
-                                    on el.albumID equals b.id
-                                    where el.fileID == this.imgID
-                                    select b;
+                var selectedAlbum = from el in db.Albums
+                                    join b in db.ImagesInAlbums
+                                    on el.id equals b.albumID
+                                    join f in db.Files
+                                    on b.fileID equals f.id
+                                 
+                                    select f;
 
                 foreach (var singleImage in selectedAlbum)
                 {
