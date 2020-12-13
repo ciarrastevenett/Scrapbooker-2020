@@ -135,21 +135,24 @@ namespace Stage_Scrapbooker
             ComboBoxItem typeItem = (ComboBoxItem)listAlbums.SelectedItem;
             string contentName = typeItem.Content.ToString();
 
-            Console.WriteLine("album name: " + contentName);
             ApplicationDBEntities1 db = new ApplicationDBEntities1();
             var selectedItem = from el in db.Albums
                                where el.albumName == contentName
                                select el;
             if (selectedItem.FirstOrDefault<Album>() != null)
             {
+
+                ComboBoxItem albumSelected = (ComboBoxItem)listAlbums.SelectedItem;
+                string albumName = albumSelected.Content.ToString();
+
                 listBox.Items.Clear();
                 //Query the DB
                 var selectedAlbum = from el in db.Albums
+                                    where el.albumName == albumName
                                     join b in db.ImagesInAlbums
                                     on el.id equals b.albumID
                                     join f in db.Files
                                     on b.fileID equals f.id
-                                 
                                     select f;
 
                 foreach (var singleImage in selectedAlbum)

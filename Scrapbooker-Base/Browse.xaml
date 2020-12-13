@@ -21,7 +21,7 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
         </ListBox>
-        <ComboBox x:Name ="listAlbums" ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" HorizontalAlignment="Left" Margin="675,8,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <ComboBox x:Name ="listAlbums" ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" HorizontalAlignment="Left" Margin="675,8,0,10" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
 
     </Grid>
 </Page>
