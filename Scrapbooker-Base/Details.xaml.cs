@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -25,6 +26,7 @@ namespace Scrapbooker_Base
     {
         int imgID;
         int albumSelectedToAddRemove;
+        string imagePathToDisplay;
         private int albumSelected;
         public ObservableCollection<ComboBoxItem> cbItems { get; set; }
         public ComboBoxItem SelectedcbItem { get; set; }
@@ -62,6 +64,8 @@ namespace Scrapbooker_Base
                 FileSize.Text = $"{el.fileSize} KB";
 
                 //Display the image on the screen
+                imagePathToDisplay = el.filePath;
+
                 var uriSource = new Uri(el.filePath, UriKind.RelativeOrAbsolute);
                 singleImage.Source = new BitmapImage(uriSource);
 
@@ -152,6 +156,14 @@ namespace Scrapbooker_Base
                                select b;
 
             this.album_list.ItemsSource = selectedItem.ToList();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo(imagePathToDisplay);
+            startInfo.Verb = "edit";
+
+            Process.Start(startInfo);
         }
     }
 }

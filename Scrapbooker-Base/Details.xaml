@@ -25,6 +25,7 @@
         <TextBlock x:Name="FileName" Text="Car.jpg" Grid.Row="2" Grid.Column="1" FontSize="20" Margin ="0,0,0,0"/>
         <Label Content="Size:" HorizontalAlignment="Left" Name="SizeLabel" FontSize="15" Grid.Row="2" Grid.Column="1" Margin ="0,40,0,0" FontWeight="Bold" />
         <TextBlock x:Name="FileSize" Text="75KB" Grid.Row="2" Grid.Column="1" FontSize="15" Margin="47.6,40.4,443,50.6"/>
+        <Button Content="Edit Image" HorizontalAlignment="Left" Margin="0.4,78.8,0,0" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="132" Click="Button_Click"/>
 
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Row="0" Grid.Column="2">
             <ComboBox x:Name="listAlbums" Margin="00,0,0,0" ItemsSource="{Binding cbItems}" SelectedItem="{Binding SelectedcbItem}" Width="210" Height="30" SelectionChanged="album_list_Main_SelectionChanged"/>
@@ -50,5 +51,6 @@
                 </ListView>
             </StackPanel>
         </StackPanel>
+
     </Grid>
 </Page>
