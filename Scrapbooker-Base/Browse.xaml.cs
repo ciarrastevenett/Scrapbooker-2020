@@ -71,28 +71,6 @@ namespace Stage_Scrapbooker
                 cbItems.Add(new ComboBoxItem { Content = alb.albumName, Tag = alb.id });
             }
 
-            var images = from d in db.Files
-                         select d;
-            // Iterate over the array let us use the information in each row (singleImage)
-            foreach (var singleImage in images)
-            {
-
-                Image simpleImage = new Image();
-                simpleImage.Width = 200;
-                simpleImage.Margin = new Thickness(5);
-                //String id = singleImage.id.ToString(); //Holding the ID of the image
-                simpleImage.Tag = singleImage.id;
-
-                BitmapImage bi = new BitmapImage();
-
-                bi.BeginInit();
-                bi.UriSource = new Uri(singleImage.filePath, UriKind.RelativeOrAbsolute);
-                bi.EndInit();
-
-                simpleImage.Source = bi;
-
-                listBox.Items.Add(simpleImage);
-            }
 
         }
       
@@ -175,6 +153,34 @@ namespace Stage_Scrapbooker
 
                 }
             }
+             else if (selectedItem.FirstOrDefault<Album>() == null)
+            {
+                listBox.Items.Clear();
+
+                var images = from d in db.Files
+                             select d;
+                // Iterate over the array let us use the information in each row (singleImage)
+                foreach (var singleImage in images)
+                {
+
+                    Image simpleImage = new Image();
+                    simpleImage.Width = 200;
+                    simpleImage.Margin = new Thickness(5);
+                    //String id = singleImage.id.ToString(); //Holding the ID of the image
+                    simpleImage.Tag = singleImage.id;
+
+                    BitmapImage bi = new BitmapImage();
+
+                    bi.BeginInit();
+                    bi.UriSource = new Uri(singleImage.filePath, UriKind.RelativeOrAbsolute);
+                    bi.EndInit();
+
+                    simpleImage.Source = bi;
+
+                    listBox.Items.Add(simpleImage);
+                }
+            }
+            
                
 
         }
